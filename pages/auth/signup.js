@@ -3,6 +3,9 @@ import { useRouter } from 'next/router';
 import Web3 from 'web3';
 import ContractABI from '../../build/contracts/Auth.json';
 
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+
 const Signup = () => {
     const [web3, setWeb3] = useState(null);
     const [contract, setContract] = useState(null);
@@ -46,15 +49,75 @@ const Signup = () => {
         }
     };
 
-    return (
-        <div>
-            <form onSubmit={handleSignUp}>
-                <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-                <button type="submit">Sign Up</button>
+    return (<div className="min-h-screen bg-black flex flex-col">
+        <Navbar />
+        <div className="flex-grow flex justify-center items-center py-12">
+            <form className="w-full max-w-md" onSubmit={handleSignUp}>
+                <div className="bg-gray-800 p-8 rounded-lg shadow-md">
+                    {/* Champ Username */}
+                    <div className="mb-4">
+                        <label htmlFor="username" className="block text-yellow-500 text-sm font-bold mb-2">
+                            Username
+                        </label>
+                        <input
+                            id="username"
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            placeholder="Username"
+                            className="appearance-none border border-gray-700 rounded w-full py-2 px-3 text-gray-300 bg-gray-700 leading-tight focus:outline-none focus:border-yellow-500"
+                        />
+                    </div>
+
+                    {/* Champ Email */}
+                    <div className="mb-4">
+                        <label htmlFor="email" className="block text-yellow-500 text-sm font-bold mb-2">
+                            Email
+                        </label>
+                        <input
+                            id="email"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Email"
+                            className="appearance-none border border-gray-700 rounded w-full py-2 px-3 text-gray-300 bg-gray-700 leading-tight focus:outline-none focus:border-yellow-500"
+                        />
+                    </div>
+
+                    {/* Champ Password */}
+                    <div className="mb-6">
+                        <label htmlFor="password" className="block text-yellow-500 text-sm font-bold mb-2">
+                            Password
+                        </label>
+                        <input
+                            id="password"
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Password"
+                            className="appearance-none border border-gray-700 rounded w-full py-2 px-3 text-gray-300 bg-gray-700 leading-tight focus:outline-none focus:border-yellow-500"
+                        />
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                        <button
+                            type="submit"
+                            className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+                        >
+                            Sign Up
+                        </button>
+                    </div>
+
+                    <div className="mt-4 text-center">
+                        <a href="/auth/signin" className="font-medium text-yellow-500 hover:text-yellow-400">
+                            Already have an account? Sign In
+                        </a>
+                    </div>
+                </div>
             </form>
         </div>
+        <Footer />
+    </div>
     );
 };
 

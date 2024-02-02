@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import { Line } from 'react-chartjs-2';
-// Importez les composants nécessaires de Chart.js
 import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
-// Enregistrez tous les éléments nécessaires
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-// Votre composant Next.js reste inchangé
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+
 
 
 export default function Home() {
@@ -44,19 +44,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="bg-gray-800 text-white py-6">
-        <div className="max-w-5xl mx-auto flex justify-between items-center px-4">
-          <h1 className="text-3xl font-bold">Monnaie Verte</h1>
-          <nav>
-            <ul className="flex space-x-4">
-              <li><a href="#" className="hover:text-gray-300">Accueil</a></li>
-              <li><a href="#" className="hover:text-gray-300">Acheter</a></li>
-              <li><a href="#" className="hover:text-gray-300">Vendre</a></li>
-              <li><a href="#" className="hover:text-gray-300">Échanger</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+      <Navbar />
 
       <main className="flex-grow">
         <section className="text-center py-4">
@@ -82,11 +70,8 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="bg-gray-800 text-white py-6">
-        <div className="text-center">
-          <p>&copy; 2024 Monnaie Verte. Tous droits réservés.</p>
-        </div>
-      </footer>
+      <Footer />
+
     </div>
   )
 }

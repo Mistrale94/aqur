@@ -3,6 +3,10 @@ import { useRouter } from 'next/router';
 import Web3 from 'web3';
 import ContractABI from '../../build/contracts/Auth.json';
 
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+
+
 const Signin = () => {
     const [web3, setWeb3] = useState(null);
     const [contract, setContract] = useState(null);
@@ -42,7 +46,7 @@ const Signin = () => {
 
             if (userData && userData.password === password) {
                 alert('Connexion réussie. Redirection vers la page d’accueil.');
-                router.push('/home'); // Adjust the path as needed
+                router.push('/'); // Adjust the path as needed
             } else {
                 alert('Échec de la connexion. Veuillez vérifier votre email ou mot de passe.');
             }
@@ -53,12 +57,57 @@ const Signin = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSignIn}>
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-                <button type="submit">Sign In</button>
-            </form>
+        <div className="min-h-screen bg-black text-gray-200 flex flex-col">
+            <Navbar />
+            <div className="flex justify-center items-center py-12 flex-grow">
+                <form className=" flex items-center justify-center bg-black-900" onSubmit={handleSignIn}>
+                    <div className="w-full max-w-md">
+                        <div className="bg-gray-800 p-8 rounded-lg shadow-md">
+                            <div className="mb-4">
+                                <label className="block text-yellow-500 text-sm font-bold mb-2" htmlFor="email">
+                                    Email / Phone Number
+                                </label>
+                                <input
+                                    className="appearance-none border border-gray-700 rounded w-full py-2 px-3 text-gray-300 bg-gray-700 leading-tight focus:outline-none focus:border-yellow-500"
+                                    id="email"
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="Email"
+                                />
+                            </div>
+                            <div className="mb-6">
+                                <label className="block text-yellow-500 text-sm font-bold mb-2" htmlFor="password">
+                                    Password
+                                </label>
+                                <input
+                                    className="appearance-none border border-gray-700 rounded w-full py-2 px-3 text-gray-300 bg-gray-700 leading-tight focus:outline-none focus:border-yellow-500"
+                                    id="password"
+                                    type="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    placeholder="Password"
+                                />
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <button
+                                    className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+                                    type="submit"
+                                >
+                                    Log In
+                                </button>
+                            </div>
+                            <div className="mt-4 text-center">
+                                <a href="/auth/signup" className="font-medium text-yellow-500 hover:text-yellow-400">
+                                    Create an Account
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <Footer />
         </div>
     );
 };
