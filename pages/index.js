@@ -49,7 +49,7 @@ export default function Home() {
       <main className="flex-grow">
         <section className="text-center py-4">
           <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-4xl font-semibold mb-6 text-black">Une nouvelle ère de la crypto-monnaie</h2>
+            <h2 className="text-4xl font-semibold mt-8 mb-12 text-black primary">Une nouvelle ère de la crypto-monnaie</h2>
             <p className="text-black mb-6">
               Contribuez à la protection de l'environnement tout en investissant dans les crypto-monnaies. Découvrez une plateforme sécurisée pour acheter, vendre et échanger.
             </p>
@@ -58,11 +58,11 @@ export default function Home() {
 
         <section className="py-4">
           <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
-            <div className="bg-gray-700 rounded-lg shadow p-6">
+            <div className="bg-gray-200 rounded-lg shadow p-6">
               <h3 className="text-xl font-semibold mb-4 text-black">Évolution du Bitcoin</h3>
               <Line key="bitcoinGraph" data={bitcoinData} />
             </div>
-            <div className="bg-gray-700 rounded-lg shadow p-6">
+            <div className="bg-gray-200 rounded-lg shadow p-6">
               <h3 className="text-xl font-semibold mb-4 text-black">Tendance de l'Ethereum</h3>
               <Line key="ethereumGraph" data={ethereumData} />
             </div>

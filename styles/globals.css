@@ -25,6 +25,37 @@ a {
     color: #1c1c1c;
 }
 
+.w-25 {
+    width: 25%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.g-20 {
+    gap: 20px;
+}
+
+.max-w-600 {
+    max-width: 900px;
+    margin: auto;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.flex-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
 @media (prefers-color-scheme: dark) {
     html {
         color-scheme: dark;
