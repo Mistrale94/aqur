@@ -97,11 +97,7 @@ const Signin = () => {
                                     Log In
                                 </button>
                             </div>
-                            <div className="mt-4 text-center">
-                                <a href="/auth/signup" className="font-medium secondary hover:text-green-500">
-                                    Create an Account
-                                </a>
-                            </div>
+
                         </div>
                     </div>
                 </form>

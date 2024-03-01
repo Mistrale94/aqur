@@ -24,7 +24,7 @@ export default function About() {
 
                         </div>
 
-                        <div className='flex g-20 mx-5'>
+                        <div className='flex g-20 mx-12'>
                             <div className="bg-white shadow rounded-lg p-14 flex flex-col items-center w-25 h-100">
                                 <h2 className="text-3xl font-semibold mb-10 primary">Notre Equipe</h2>
                                 <div className="space-y-8 text-left">

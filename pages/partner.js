@@ -28,7 +28,7 @@ export default function Partnership() {
                     </div>
 
                     <div className="flex space-x-4 px-20 max-w-600 flex-bottom">
-                        <span className='text-green-600 text-xl mt-8'>#BlockchainAvecMonnaieVerte</span>
+                        <span className='text-green-600 text-xl mt-6'>#BlockchainAvecMonnaieVerte</span>
                         <div className="flex space-x-5">
                             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                                 <FontAwesomeIcon icon={faInstagram} size="2x" className="text-green-800" />
@@ -56,12 +56,12 @@ export default function Partnership() {
                     </div>
                 </section>
 
-                <section aria-labelledby="opportunities-header">
-                    <h2 id="opportunities-header" className="text-3xl font-bold mt-14 primary">Opportunités de Partenariat</h2>
-                    <p className="mt-3">
-                        We’re always looking for new partners who share our vision. If you’re interested in exploring collaboration opportunities, we’d love to hear from you.
+                <section aria-labelledby="opportunities-header" className="flex flex-col items-center py-12">
+                    <h2 id="opportunities-header" className="text-3xl font-bold primary text-center">Opportunités de Partenariat</h2>
+                    <p className="pt-8 max-w-600 text-center">
+                        Rejoignez-nous pour façonner un avenir durable avec notre blockchain éco-responsable. Votre expertise peut amplifier notre impact : ensemble, innovons pour un monde meilleur. Votre contribution est clé pour des solutions vertes efficaces. Transformons l'avenir, main dans la main.
                     </p>
-                    <a href="/contact" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block">Contact us</a>
+                    <a href="/contact" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-12 rounded mt-8 inline-block text-center">Contact us</a>
                 </section>
             </main>
 
