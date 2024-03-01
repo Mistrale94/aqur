@@ -61,27 +61,31 @@ const Profile = () => {
   const tokenAddress = userAddress && ContractABI.networks[networkId] ? ContractABI.networks[networkId].address : null;
 
   return (
-    <div>
+    <div className="min-h-screen bg-white text-black flex flex-col">
       <Navbar />
-      {loading ? (
-        <p>Loading...</p>
-      ) : userAddress ? (
-        <main>
-          <h1>Profile Page</h1>
-          <p>Connecter à Metamask avec l'adresse: {userAddress}</p>
-          {tokenAddress && <p>Adresse du Token: {tokenAddress}</p>}
-          <h2>Historique des transactions</h2>
-          <ul>
-            {transactions.map((tx, index) => (
-              <li key={index}>
-                De: {tx.from} - A: {tx.to} - Valeur: {Web3.utils.fromWei(tx.value, 'ether')} ETH
-              </li>
-            ))}
-          </ul>
-        </main>
-      ) : (
-        <p>Please connect to MetaMask to view your profile information.</p>
-      )}
+      <main className="flex-grow container mx-auto px-4 py-8">
+        {loading ? (
+          <div className="text-center">
+            <p className="text-lg">Loading...</p>
+          </div>
+        ) : userAddress ? (
+          <div>
+            <h1 className="text-2xl font-bold mb-4">Profile Page</h1>
+            <p className="mb-2">Connecté à Metamask avec l'adresse: <span className="font-mono text-sm bg-gray-200 p-2 rounded">{userAddress}</span></p>
+            {tokenAddress && <p className="mb-4">Adresse du Token: <span className="font-mono text-sm bg-gray-200 p-2 rounded">{tokenAddress}</span></p>}
+            <h2 className="text-xl font-semibold mb-2">Historique des transactions</h2>
+            <ul className="list-disc pl-5">
+              {transactions.map((tx, index) => (
+                <li key={index} className="mb-1">
+                  De: <span className="font-mono">{tx.from}</span> - A: <span className="font-mono">{tx.to}</span> - Valeur: <span className="font-bold">{Web3.utils.fromWei(tx.value, 'ether')} ETH</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <p className="text-center">Please connect to MetaMask to view your profile information.</p>
+        )}
+      </main>
       <Footer />
     </div>
   );
