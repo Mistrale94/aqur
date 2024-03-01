@@ -8,7 +8,7 @@ export default function Partnership() {
     return (
         <div className="min-h-screen text-gray-900 flex flex-col bg-white">
             <Head>
-                <title>Partnership - Monnaie Verte</title>
+                <title>Monnaie Verte - Partenariat</title>
                 <meta name="description" content="Explore partnership opportunities with Monnaie Verte." />
                 <link rel="icon" href="/favicon.ico" />
             </Head>

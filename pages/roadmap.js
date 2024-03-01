@@ -3,10 +3,14 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLightbulb, faSeedling, faTools, faRocket, faSyncAlt, faSun, faUserShield, faFlagCheckered, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import Head from 'next/head';
 
 const Roadmap = () => {
     return (
         <div className="min-h-screen bg-white text-black flex flex-col">
+            <Head>
+                <title>Monnaie Verte - Roadmap</title>
+            </Head>
             <Navbar />
             <main className="flex-grow container mx-auto px-4 py-16">
                 <h1 className="text-3xl font-bold mb-10 text-center text-gray-800">Roadmap Condensée du Projet</h1>

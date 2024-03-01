@@ -64,8 +64,7 @@ const Profile = () => {
   return (
     <div className="min-h-screen bg-white text-black flex flex-col">
       <Head>
-        <title>Monnaie Verte - Profile</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Monnaie Verte - Profil</title>
       </Head>
       <Navbar />
       <main className="flex-grow container mx-auto px-4 py-8">

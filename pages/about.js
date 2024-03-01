@@ -6,7 +6,7 @@ export default function About() {
     return (
         <div className="min-h-scree text-gray-900 flex flex-col">
             <Head>
-                <title>About Us - Monnaie Verte</title>
+                <title>Monnaie Verte - A propos</title>
                 <meta name="description" content="Learn more about Monnaie Verte - the cryptocurrency exchange platform dedicated to environmental issues." />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
