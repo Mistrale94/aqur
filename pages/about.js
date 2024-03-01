@@ -84,7 +84,7 @@ export default function About() {
                                             <span>© Monnaie Verte</span>
                                         </div>
                                         <div>
-                                            <span className="block font-semibold">Fond levé : 1 million d'euros</span>
+                                            <span className="block font-semibold">Levée de fonds : 1 million d'euros</span>
                                             <span>Paris, France</span>
                                         </div>
                                     </div>
