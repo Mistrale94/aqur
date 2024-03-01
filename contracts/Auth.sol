@@ -7,27 +7,24 @@ contract Auth {
     mapping(string => user) public usersList;
 
     struct user {
-        string username;
         string email;
         string password;
     }
 
     // events
 
-    event userCreated(string username, string email, string password);
+    event userCreated(string email, string password);
 
     function createUser(
-        string memory _username,
         string memory _email,
         string memory _password
     ) public {
         userCount++;
-        usersList[_email] = user(_username, _email, _password);
-        emit userCreated(_username, _email, _password);
+        usersList[_email] = user(_email, _password);
+        emit userCreated(_email, _password);
     }
 
     function verifyUser(
-        string memory _username,
         string memory _email,
         string memory _password
     ) public view returns (bool) {
@@ -35,9 +32,7 @@ contract Auth {
 
         // Vérifier si l'utilisateur existe et si le nom d'utilisateur correspond
         if (
-            bytes(u.email).length == 0 ||
-            keccak256(abi.encodePacked(u.username)) !=
-            keccak256(abi.encodePacked(_username))
+            bytes(u.email).length == 0
         ) {
             return false;
         }

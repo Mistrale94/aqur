@@ -3,6 +3,7 @@ import Web3 from 'web3';
 import ContractABI from '../../build/contracts/Auth.json';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Head from 'next/head';
 
 const Profile = () => {
   const [tokenBalance, setTokenBalance] = useState(null);
@@ -28,12 +29,12 @@ const Profile = () => {
             const block = await web3.eth.getBlock(i, true);
             if (block.transactions) {
               block.transactions.forEach(async tx => {
-                console.log(tx)
                 try {
                   const receipt = await web3.eth.getTransactionReceipt(tx.hash);
                   if (receipt) {
                     const from = tx.from;
                     const to = tx.to;
+                    // Assurez-vous de convertir la valeur BigInt en chaîne avant de la passer à fromWei
                     const value = web3.utils.fromWei(tx.value.toString(), 'ether');
                     fetchedTransactions.push({ from, to, value });
                   }
@@ -62,6 +63,10 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen bg-white text-black flex flex-col">
+      <Head>
+        <title>Monnaie Verte - Profile</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Navbar />
       <main className="flex-grow container mx-auto px-4 py-8">
         {loading ? (
@@ -71,13 +76,13 @@ const Profile = () => {
         ) : userAddress ? (
           <div>
             <h1 className="text-2xl font-bold mb-4">Profile Page</h1>
-            <p className="mb-2">Connecté à Metamask avec l'adresse: <span className="font-mono text-sm bg-gray-200 p-2 rounded">{userAddress}</span></p>
-            {tokenAddress && <p className="mb-4">Adresse du Token: <span className="font-mono text-sm bg-gray-200 p-2 rounded">{tokenAddress}</span></p>}
+            <p className="mb-2">Connecté à Metamask avec l'adresse : <span className="font-mono text-sm bg-gray-200 p-2 rounded">{userAddress}</span></p>
+            {tokenAddress && <p className="mb-4 mt-6">Adresse du Token : <span className="font-mono text-sm bg-gray-200 p-2 rounded">{tokenAddress}</span></p>}
             <h2 className="text-xl font-semibold mb-2">Historique des transactions</h2>
             <ul className="list-disc pl-5">
               {transactions.map((tx, index) => (
                 <li key={index} className="mb-1">
-                  De: <span className="font-mono">{tx.from}</span> - A: <span className="font-mono">{tx.to}</span> - Valeur: <span className="font-bold">{Web3.utils.fromWei(tx.value, 'ether')} ETH</span>
+                  De : <span className="font-mono">{tx.from}</span> - A : <span className="font-mono">{tx.to}</span> - Valeur : <span className="font-bold">{tx.value} ETH</span>
                 </li>
               ))}
             </ul>

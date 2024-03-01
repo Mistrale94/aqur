@@ -17,7 +17,12 @@ export default function Home() {
       <Head>
         <title>Monnaie Verte - Échange de Crypto-monnaie</title>
         <meta name="description" content="Bienvenue sur notre site d'échange de crypto-monnaie dédié à la lutte contre les problématiques environnementales." />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" sizes="16x16 32x32" type="image/x-icon" />
+        <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" />
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" /> 
+        <link rel="icon" href="/android-chrome-192x192.png" sizes="192x192" type="image/png" />
+        <link rel="icon" href="/android-chrome-512x512.png" sizes="512x512" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" type="image/png"/>
       </Head>
 
       <Navbar />

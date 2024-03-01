@@ -6,7 +6,6 @@ import ContractABI from '../../build/contracts/Auth.json';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-
 const Signin = () => {
     const [web3, setWeb3] = useState(null);
     const [contract, setContract] = useState(null);
@@ -21,6 +20,12 @@ const Signin = () => {
                 const web3 = new Web3(window.ethereum);
                 setWeb3(web3);
 
+                const accounts = await web3.eth.getAccounts();
+                if (accounts.length > 0) {
+                    // Un compte MetaMask est connecté, redirige vers la page de profil
+                    router.push('/auth/profile');
+                }
+
                 const deployedNetwork = ContractABI.networks[Object.keys(ContractABI.networks)[0]];
                 const instance = new web3.eth.Contract(
                     ContractABI.abi,
@@ -33,78 +38,70 @@ const Signin = () => {
         };
 
         initWeb3();
-    }, []);
+    }, [router]);
 
-    const handleSignIn = async (e) => {
+    const handleSignUp = async (e) => {
         e.preventDefault();
 
         try {
-            if (!contract) throw new Error("Contract not loaded!");
-
-            const accounts = await web3.eth.getAccounts();
-            const userData = await contract.methods.usersList(email).call();
-
-            if (userData && userData.password === password) {
-                alert('Connexion réussie. Redirection vers la page d’accueil.');
-                router.push('/'); // Adjust the path as needed
-            } else {
-                alert('Échec de la connexion. Veuillez vérifier votre email ou mot de passe.');
+            if (web3 && contract) {
+                const accounts = await web3.eth.getAccounts();
+                await contract.methods.createUser(email, password).send({ from: accounts[0] });
+                alert('Inscription réussie. Redirection vers la page de profil.');
+                router.push('/auth/profile');
             }
         } catch (error) {
-            console.error("Erreur lors de la connexion: ", error);
-            alert("Erreur lors de la connexion. Veuillez réessayer.");
+            console.error("Erreur lors de l'inscription: ", error);
+            alert("Erreur lors de l'inscription. Veuillez réessayer.");
         }
     };
 
     return (
-        <div className="min-h-screen bg-white text-black flex flex-col">
-            <Navbar />
-            <div className="flex justify-center items-center py-12 flex-grow">
-                <form className=" flex items-center justify-center bg-black-900" onSubmit={handleSignIn}>
-                    <div className="w-full max-w-md">
-                        <div className="bg-gray-300 p-8 rounded-lg shadow-md">
-                            <div className="mb-4">
-                                <label className="block secondary text-sm font-bold mb-2" htmlFor="email">
-                                    Email / Phone Number
-                                </label>
-                                <input
-                                    className="appearance-none border border-green-500 rounded w-full py-2 px-3 text-gray-300 bg-white leading-tight focus:outline-none focus:border-yellow-500"
-                                    id="email"
-                                    type="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="Email"
-                                />
-                            </div>
-                            <div className="mb-6">
-                                <label className="block secondary text-sm font-bold mb-2" htmlFor="password">
-                                    Password
-                                </label>
-                                <input
-                                    className="appearance-none border border-green-500 rounded w-full py-2 px-3 text-gray-300 bg-white leading-tight focus:outline-none focus:border-yellow-500"
-                                    id="password"
-                                    type="password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    placeholder="Password"
-                                />
-                            </div>
-                            <div className="flex items-center justify-between">
-                                <button
-                                    className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-                                    type="submit"
-                                >
-                                    Log In
-                                </button>
-                            </div>
-
-                        </div>
+    <div className="min-h-screen bg-black flex flex-col">
+        <Navbar />
+        <div className="flex-grow flex justify-center items-center py-12">
+            <form className="w-full max-w-md" onSubmit={handleSignUp}>
+                <div className="bg-gray-800 p-8 rounded-lg shadow-md">
+                    <div className="mb-4">
+                        <label htmlFor="email" className="block text-yellow-500 text-sm font-bold mb-2">
+                            Email
+                        </label>
+                        <input
+                            id="email"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Email"
+                            className="appearance-none border border-gray-700 rounded w-full py-2 px-3 text-gray-300 bg-gray-700 leading-tight focus:outline-none focus:border-yellow-500"
+                        />
                     </div>
-                </form>
+                    <div className="mb-6">
+                        <label htmlFor="password" className="block text-yellow-500 text-sm font-bold mb-2">
+                            Password
+                        </label>
+                        <input
+                            id="password"
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Password"
+                            className="appearance-none border border-gray-700 rounded w-full py-2 px-3 text-gray-300 bg-gray-700 leading-tight focus:outline-none focus:border-yellow-500"
+                        />
+                    </div>
 
-            </div>
-            <Footer />
+                    <div className="flex items-center justify-between">
+                        <button
+                            type="submit"
+                            className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+                        >
+                            Connexion
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
+        <Footer />
+    </div>
     );
 };
 
