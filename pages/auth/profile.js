@@ -28,6 +28,7 @@ const Profile = () => {
             const block = await web3.eth.getBlock(i, true);
             if (block.transactions) {
               block.transactions.forEach(async tx => {
+                console.log(tx)
                 try {
                   const receipt = await web3.eth.getTransactionReceipt(tx.hash);
                   if (receipt) {
@@ -47,7 +48,7 @@ const Profile = () => {
         } catch (error) {
           console.error("Error connecting to MetaMask:", error);
         } finally {
-          setLoading(false); // Mettez setLoading(false) ici pour arrêter le chargement après avoir récupéré les transactions
+          setLoading(false);
         }
       } else {
         console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
@@ -67,13 +68,13 @@ const Profile = () => {
       ) : userAddress ? (
         <main>
           <h1>Profile Page</h1>
-          <p>Connected with MetaMask at address: {userAddress}</p>
-          {tokenAddress && <p>Token Address: {tokenAddress}</p>}
-          <h2>Transaction History</h2>
+          <p>Connecter à Metamask avec l'adresse: {userAddress}</p>
+          {tokenAddress && <p>Adresse du Token: {tokenAddress}</p>}
+          <h2>Historique des transactions</h2>
           <ul>
             {transactions.map((tx, index) => (
               <li key={index}>
-                From: {tx.from} - To: {tx.to} - Value: {Web3.utils.fromWei(tx.value, 'ether')} ETH
+                De: {tx.from} - A: {tx.to} - Valeur: {Web3.utils.fromWei(tx.value, 'ether')} ETH
               </li>
             ))}
           </ul>

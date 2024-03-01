@@ -5,36 +5,12 @@ Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Too
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import EthereumChart from './components/EthereumChart';
+import BitcoinChart from './components/BitcoinChart';
 
 
 
 export default function Home() {
-  const bitcoinData = {
-    labels: ['Févr', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Sept', 'Oct', 'Nov', 'Déc', 'Jan'],
-    datasets: [
-      {
-        label: 'Bitcoin',
-        data: [29160.4, 30964.9, 29816.4, 31395.4, 31764.5, 30168.6, 27480.7, 35191.4, 38400.8, 44697.6, 48923.7, 43408.8],
-        fill: false,
-        borderColor: 'rgb(75, 192, 192)',
-        tension: 0.1
-      }
-    ]
-  };
-
-  const ethereumData = {
-    labels: ['Févr', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Sept', 'Oct', 'Nov', 'Déc', 'Jan'],
-    datasets: [
-      {
-        label: 'Ethereum',
-        data: [1852.48, 2137.56, 2013.10, 1943.65, 2025.56, 1879.32, 1693.68, 1864.81, 2135.91, 2443.59, 2712.88, 2324.57],
-        fill: false,
-        borderColor: 'rgb(255, 99, 132)',
-        tension: 0.1
-      }
-    ]
-  };
-
 
   return (
     <div className="min-h-screen bg-white text-black flex flex-col">
@@ -57,15 +33,16 @@ export default function Home() {
         </section>
 
         <section className="py-4">
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
-            <div className="bg-gray-200 rounded-lg shadow p-6">
-              <h3 className="text-xl font-semibold mb-4 text-black">Évolution du Bitcoin</h3>
-              <Line key="bitcoinGraph" data={bitcoinData} />
+          <div className="max-w-4xl mx-auto px-4">
+            <div className='mb-20'>
+              <h2 className="text-2xl font-semibold mb-4">Prix de l'Ethereum</h2>
+              <EthereumChart />
             </div>
-            <div className="bg-gray-200 rounded-lg shadow p-6">
-              <h3 className="text-xl font-semibold mb-4 text-black">Tendance de l'Ethereum</h3>
-              <Line key="ethereumGraph" data={ethereumData} />
+            <div>
+              <h2 className="text-2xl font-semibold mb-4">Prix du Bitcoin</h2>
+              <BitcoinChart />
             </div>
+            <br />
           </div>
         </section>
       </main>
