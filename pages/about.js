@@ -14,11 +14,11 @@ export default function About() {
             <Navbar />
 
             <main className="flex-grow">
-                <section className="text-center py-20 bg-gray-100">
-                    <div className="mx-auto">
+                <section className="text-center bg-gray-100">
+                    <div className="mx-auto pb-20">
 
                         <div className='p-20 max-w-600'>
-                            <h1 className="text-5xl font-bold mb-6 primary">Notre objectif</h1>
+                            <h1 className="text-5xl font-bold mb-12 primary">Notre objectif</h1>
                             <p className="text-lg mb-12">
                                 Une blockchain éco-énergétique, réduisant la surconsommation énergétique. Création d'une crypto-monnaie sécurisée, décentralisée, et fiable, avec des mécanismes de consensus innovants pour économiser l'énergie. Nous visons à mener l'industrie blockchain vers la durabilité.</p>
 
