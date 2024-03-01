@@ -57,51 +57,52 @@ const Signin = () => {
     };
 
     return (
-    <div className="min-h-screen bg-black flex flex-col">
-        <Navbar />
-        <div className="flex-grow flex justify-center items-center py-12">
-            <form className="w-full max-w-md" onSubmit={handleSignUp}>
-                <div className="bg-gray-800 p-8 rounded-lg shadow-md">
-                    <div className="mb-4">
-                        <label htmlFor="email" className="block text-yellow-500 text-sm font-bold mb-2">
-                            Email
-                        </label>
-                        <input
-                            id="email"
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Email"
-                            className="appearance-none border border-gray-700 rounded w-full py-2 px-3 text-gray-300 bg-gray-700 leading-tight focus:outline-none focus:border-yellow-500"
-                        />
-                    </div>
-                    <div className="mb-6">
-                        <label htmlFor="password" className="block text-yellow-500 text-sm font-bold mb-2">
-                            Password
-                        </label>
-                        <input
-                            id="password"
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Password"
-                            className="appearance-none border border-gray-700 rounded w-full py-2 px-3 text-gray-300 bg-gray-700 leading-tight focus:outline-none focus:border-yellow-500"
-                        />
-                    </div>
+        <div className="min-h-screen bg-white flex flex-col">
+            <Navbar />
+            <div className="flex-grow flex justify-center items-center py-12">
+                <form className="w-3/4 max-w-2xl" onSubmit={handleSignUp}>
+                    <div className="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+                        <h2 className='text-xl pb-6 primary font-medium'>Conexion à Meta Mask</h2>
+                        <div className="mb-4">
+                            <label htmlFor="email" className="block text-green-600 text-sm font-bold mb-2">
+                                Email
+                            </label>
+                            <input
+                                id="email"
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Email"
+                                className="bg-green-100 appearance-none border border-green-100 rounded w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:border-green-500"
+                            />
+                        </div>
+                        <div className="mb-6">
+                            <label htmlFor="password" className="block text-green-600 text-sm font-bold mb-2">
+                                Password
+                            </label>
+                            <input
+                                id="password"
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="Password"
+                                className="bg-green-100 appearance-none border border-green-100 rounded w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:border-green-500"
+                            />
+                        </div>
 
-                    <div className="flex items-center justify-between">
-                        <button
-                            type="submit"
-                            className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-                        >
-                            Connexion
-                        </button>
+                        <div className="flex items-center justify-between">
+                            <button
+                                type="submit"
+                                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-10 mt-4 rounded focus:outline-none focus:shadow-outline m-auto transition-colors duration-150"
+                            >
+                                Connexion
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
+            <Footer />
         </div>
-        <Footer />
-    </div>
     );
 };
 
