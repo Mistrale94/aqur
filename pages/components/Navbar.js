@@ -24,7 +24,11 @@ const Navbar = () => {
                                 Connexion
                             </button>
                         </Link></li>
-
+                        <li><Link href="/auth/signup" className="text-green-800 hover:text-green-600 font-medium text-l">
+                            <button className="bg-white border-2 border-green-300 rounded-lg px-4 py-2 text-green-500 hover:bg-green-500 hover:text-white transition duration-300 ease-in-out">
+                                Créer son compte
+                            </button>
+                        </Link></li>
                     </ul>
                 </nav>
             </div>
